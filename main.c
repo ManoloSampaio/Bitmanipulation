@@ -1,34 +1,27 @@
 /*
 *@Autor: Emmanuel Sampaio
-*@
-*
 **/
 #include <stdio.h>
 #include <stdlib.h>
 #include "binlib.h"
 int main(void) {
-  	unsigned long *a,*b;
-  	unsigned long var=7000;
-  	unsigned char bitn='3';
-  	a = &var;
-  	//printf("%li \n",*a);
-  	//printf("%c\n",ReadBit(a,bitn));
-	ToggletBit(a,bitn);
-	//printf("%li \n",*a);
+  	unsigned long *a;
+  	unsigned long numero=15;//Número que vai ser usado no test
+  	unsigned char bitn='3';//O bit que vai ser utilizado no teste
+  	unsigned char bitstart='0';//O bit de início 
+  	unsigned char bitend='4';//O bit final da leitura
+	unsigned char valor1;//Vai armazenar a informação que é retornada pela função IlLittleEndian();
+  	unsigned char valor2;//Vai armazenar a informação que é retornada pela função ReadBit();
+  	unsigned long valor3;//Vai armazenar a informação que é retornada pela função ReadBitSlice();
+	a=&numero;
+  	valor1 = IsLittleEndian();
+  	valor2 = ReadBit(a,bitn);
+  	ToggletBit(a,bitn);
+	valor2 = ReadBit(a,bitn);
 	SetBit(a,bitn);
-	//printf("%c\n",ReadBit(a,bitn));
-	//printf("%li\n",*a);
+	valor2 = ReadBit(a,bitn);
 	ResetBit(a,bitn);
-	//printf("%li\n",*a);
- 	//ResetBit(a,bitn);
-	//printf("%c\n",ReadBit(a,bitn));
-	//printf("%li\n",ReadBitSlice(a,'0','1'));
-	char variable = IsLittleEndian();
-	printf("%c",variable);
-	unsigned long vara = 0x1000;
- 	unsigned long *k=&vara;
-	unsigned long resposta= *k;
-	printf("%x\n",resposta);
-	printf("%c",IsLittleEndian());
+	valor2 = ReadBit(a,bitn);
+	valor3 = ReadBitSlice(a,bitstart,bitend);
 	return 0;
 }
