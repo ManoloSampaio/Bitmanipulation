@@ -1,0 +1,148 @@
+\hypertarget{binlib_8c}{}\doxysection{binlib.\+c File Reference}
+\label{binlib_8c}\index{binlib.c@{binlib.c}}
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{binlib_8c_a37bbcc2719ccbd8601a629db18035a29}{Set\+Bit}} (unsigned long $\ast$p, unsigned char bitn)
+\begin{DoxyCompactList}\small\item\em Seta o bit da posição de memória apontada por p. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{binlib_8c_a1e84ee9473b03d435544463a0cc54b2f}{Reset\+Bit}} (unsigned long $\ast$p, unsigned char bitn)
+\begin{DoxyCompactList}\small\item\em Reseta o bit da posição de memória apontada por p. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{binlib_8c_a92dd59916b4db2e6a6bd82ffea9df6c4}{Togglet\+Bit}} (unsigned long $\ast$p, unsigned char bitn)
+\begin{DoxyCompactList}\small\item\em Inverte um bit da posição de memória apontada por p. \end{DoxyCompactList}\item 
+unsigned char \mbox{\hyperlink{binlib_8c_a954ece8164f5a52e814d77979cb8aa44}{Read\+Bit}} (unsigned long $\ast$p, unsigned char bitn)
+\begin{DoxyCompactList}\small\item\em Ler o bit da posição de memória apontada por p. \end{DoxyCompactList}\item 
+unsigned long \mbox{\hyperlink{binlib_8c_a1699bceb3d3fa172806e1353ddb377e5}{Read\+Bit\+Slice}} (unsigned long $\ast$p, unsigned char bitstart, unsigned char bitend)
+\begin{DoxyCompactList}\small\item\em Ler uma fatia de bits da posição bitstart até bitend. \end{DoxyCompactList}\item 
+unsigned char \mbox{\hyperlink{binlib_8c_abdccc0ee50ad23d684b785ed95384aee}{Is\+Little\+Endian}} (void)
+\begin{DoxyCompactList}\small\item\em Detecta se a arquitetura corrente armazena os dados em formato little endian ou big endian. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+@\+Autor Emmanuel Sampaio @\+Date 17/08/2019 
+
+\doxysubsection{Function Documentation}
+\mbox{\Hypertarget{binlib_8c_abdccc0ee50ad23d684b785ed95384aee}\label{binlib_8c_abdccc0ee50ad23d684b785ed95384aee}} 
+\index{binlib.c@{binlib.c}!IsLittleEndian@{IsLittleEndian}}
+\index{IsLittleEndian@{IsLittleEndian}!binlib.c@{binlib.c}}
+\doxysubsubsection{\texorpdfstring{IsLittleEndian()}{IsLittleEndian()}}
+{\footnotesize\ttfamily unsigned char Is\+Little\+Endian (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+
+
+Detecta se a arquitetura corrente armazena os dados em formato little endian ou big endian. 
+
+\begin{DoxyReturn}{Returns}
+Retorna 1 para Little endian e 0 para Big Endian
+\end{DoxyReturn}
+Little endian=O número mais significativo vai estar no número de memória maior que o menos siginificativo\textbackslash{} Big endian = O número menos significativo vai estar armazenado de forma inversa ao Litlle Endian. Exemplo\+: número 1.\+Ponteiro ira apontar para 1 caso seja Little Endian,pois o ponteiro aponta para o espaço da memória de menor endereço Caso retorne 0 temos o número apontando para o espaço da memória de maior indereço,assim temos Big Endian. \mbox{\Hypertarget{binlib_8c_a954ece8164f5a52e814d77979cb8aa44}\label{binlib_8c_a954ece8164f5a52e814d77979cb8aa44}} 
+\index{binlib.c@{binlib.c}!ReadBit@{ReadBit}}
+\index{ReadBit@{ReadBit}!binlib.c@{binlib.c}}
+\doxysubsubsection{\texorpdfstring{ReadBit()}{ReadBit()}}
+{\footnotesize\ttfamily unsigned char Read\+Bit (\begin{DoxyParamCaption}\item[{unsigned long $\ast$}]{p,  }\item[{unsigned char}]{bitn }\end{DoxyParamCaption})}
+
+
+
+Ler o bit da posição de memória apontada por p. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em p} & Ponteiro para variável de 32bits cujo bit será lido \\
+\hline
+{\em bitn} & Posição do bit (0 a 31) a ser lido \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+retorna o estado (0 ou 1) do bit da posição de memória apontada por p
+\end{DoxyReturn}
+Exemplo\+: $\ast$p = 15, que é 0....01111.\+bitn = 3,então é esperado ler 1. 1$<$$<$3 = 0.....1000., 0....01111 And 0.....1000 = 00000.....1000.\+Logo ele vai retornar 1. bitn $<$ Variável que define a posicao fazendo uma espécie de casting da posição que antes era unsigned char ~\newline
+
+
+resultado armazena o número que saiu do $\ast$p and posicao\mbox{\Hypertarget{binlib_8c_a1699bceb3d3fa172806e1353ddb377e5}\label{binlib_8c_a1699bceb3d3fa172806e1353ddb377e5}} 
+\index{binlib.c@{binlib.c}!ReadBitSlice@{ReadBitSlice}}
+\index{ReadBitSlice@{ReadBitSlice}!binlib.c@{binlib.c}}
+\doxysubsubsection{\texorpdfstring{ReadBitSlice()}{ReadBitSlice()}}
+{\footnotesize\ttfamily unsigned long Read\+Bit\+Slice (\begin{DoxyParamCaption}\item[{unsigned long $\ast$}]{p,  }\item[{unsigned char}]{bitstart,  }\item[{unsigned char}]{bitend }\end{DoxyParamCaption})}
+
+
+
+Ler uma fatia de bits da posição bitstart até bitend. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em p} & Ponteiro para variável de 32bits de onde a fatia de bits será lida \\
+\hline
+{\em bitstart} & Posição do bit (0 a 31) do primeiro bit a ser lido \\
+\hline
+{\em bitend} & Posição do bit (0 a 31) do último bit a ser lido \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+retorna os bits de bitstart até bitend
+\end{DoxyReturn}
+Como funciona o método\+: dado o número \char`\"{}apontado\char`\"{} por p,realizamos a leitura de cada um dos bits da posição inicial,indicada por bitstart,até a posição final indicada por bitend.\+Usamos And para comparar o bit com 1 e assim definimos se o bit lido é 1 ou 0 e assim,setamos um bit de retorno,caso o bit lido seja um ou mantemos zerado,caso o bit lido seja 0. $<$Binário que ira retornar
+
+incialposition$<$Posição inicial convertida para inteiro
+
+finalposition$<$Posição final convertida para inteiro
+
+j$<$Indica a posição (0 a 31) bit da variável retorno\mbox{\Hypertarget{binlib_8c_a1e84ee9473b03d435544463a0cc54b2f}\label{binlib_8c_a1e84ee9473b03d435544463a0cc54b2f}} 
+\index{binlib.c@{binlib.c}!ResetBit@{ResetBit}}
+\index{ResetBit@{ResetBit}!binlib.c@{binlib.c}}
+\doxysubsubsection{\texorpdfstring{ResetBit()}{ResetBit()}}
+{\footnotesize\ttfamily void Reset\+Bit (\begin{DoxyParamCaption}\item[{unsigned long $\ast$}]{p,  }\item[{unsigned char}]{bitn }\end{DoxyParamCaption})}
+
+
+
+Reseta o bit da posição de memória apontada por p. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em p} & Ponteiro para variável de 32bits cujo bit será resetado \\
+\hline
+{\em bitn} & Posição do bit (0 a 31) a ser resetado\\
+\hline
+\end{DoxyParams}
+Exemplo do funcionamento da função\+:$\ast$p=4,que é 000...00100.\+Seja bitn = 2.\+Assim,1$<$$<$bitn = 0000...100.\+Fazendo o inverso de 1$<$$<$bitn temos=1111...0111,assim\+: 000.\+00100 and 1111...11011 = 000....0000.\+Restando o bit da posição 2. posicao$<$ Variável que define a posicao fazendo uma espécie de casting da posição que antes era unsigned char ~\newline
+
+
+$\ast$p\&=$\sim$(1 $<$$<$posicao ) Usando \char`\"{}\+N\+And\char`\"{} para setar o bit na posição bitn\mbox{\Hypertarget{binlib_8c_a37bbcc2719ccbd8601a629db18035a29}\label{binlib_8c_a37bbcc2719ccbd8601a629db18035a29}} 
+\index{binlib.c@{binlib.c}!SetBit@{SetBit}}
+\index{SetBit@{SetBit}!binlib.c@{binlib.c}}
+\doxysubsubsection{\texorpdfstring{SetBit()}{SetBit()}}
+{\footnotesize\ttfamily void Set\+Bit (\begin{DoxyParamCaption}\item[{unsigned long $\ast$}]{p,  }\item[{unsigned char}]{bitn }\end{DoxyParamCaption})}
+
+
+
+Seta o bit da posição de memória apontada por p. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em p} & Ponteiro para variável de 32bits cujo bit será setado \\
+\hline
+{\em bitn} & Posição do bit (0 a 31) a ser setado\\
+\hline
+\end{DoxyParams}
+Exemplo do funcionamento da função\+:$\ast$p=3,que é 00000...00111.\+Seja bitn =3.\+Assim,1$<$$<$bitn =0000..1000.\+Fazendo 000...00111 Or 000...1000 = 0000....01111.\+Assim setamos o bit da posição 3. posicao$<$ Variável que define a posicao fazendo uma espécie de casting da posição que antes era unsigned char ~\newline
+
+
+p$\vert$=(1$<$$<$posicao)$<$$\ast$\+Usando Or para setar o bit na posição bitn\mbox{\Hypertarget{binlib_8c_a92dd59916b4db2e6a6bd82ffea9df6c4}\label{binlib_8c_a92dd59916b4db2e6a6bd82ffea9df6c4}} 
+\index{binlib.c@{binlib.c}!ToggletBit@{ToggletBit}}
+\index{ToggletBit@{ToggletBit}!binlib.c@{binlib.c}}
+\doxysubsubsection{\texorpdfstring{ToggletBit()}{ToggletBit()}}
+{\footnotesize\ttfamily void Togglet\+Bit (\begin{DoxyParamCaption}\item[{unsigned long $\ast$}]{p,  }\item[{unsigned char}]{bitn }\end{DoxyParamCaption})}
+
+
+
+Inverte um bit da posição de memória apontada por p. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em p} & Ponteiro para variável de 32bits cujo bit será invertido \\
+\hline
+{\em bitn} & Posição do bit (0 a 31) a ser invertido\\
+\hline
+\end{DoxyParams}
+Exemplo\+: $\ast$p=1,que é 0000...001.\+bitn=1,então é esperado realizar o Togglet na posição 1. 1$<$$<$1 = .0000000010. 0.\+000001 Xor 000000....010 = 0...00000011. $<$ Variável que define a posicao fazendo uma espécie de casting da posição que antes era unsigned char ~\newline
+
+
+$<$ $\ast$p $^\wedge$= 1 $<$$<$ posicao Fazendo o Toggle de bit utilizando bit XoR 1.
