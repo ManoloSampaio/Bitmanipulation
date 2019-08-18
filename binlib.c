@@ -40,7 +40,7 @@ void ResetBit(unsigned long *p, unsigned char bitn){
 */
 void ToggletBit(unsigned long *p, unsigned char bitn){
 	int posicao = bitn-'0';/*!< Variável que define a posicao fazendo uma espécie de casting da posição que antes era unsigned char  */
-    *p ^= 1 << posicao;/*!< *p ^= 1 << posicao Fazendo o Toggle de bit utilizando bit XoR 1.*/ 
+    	*p ^= 1 << posicao;/*!< *p ^= 1 << posicao Fazendo o Togglet de bit utilizando bit XoR 1.*/ 
 }
 /*! 
 *@brief Ler o bit da posição de memória apontada por p
@@ -104,7 +104,6 @@ unsigned char IsLittleEndian (void) {
 	unsigned long teste = 0x01020304;
 	void *a = &teste;
 	char * ch = (char *)a;
-	printf("%li\n",*ch);
 	if((*ch)==4){
 		return('1');
 	}
