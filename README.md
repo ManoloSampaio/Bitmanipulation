@@ -1,5 +1,5 @@
 Questão única: Desenvolva e teste, em ambiente linux, as funções cujos protótipos estão abaixo descritos. Aproveite a oportunidade para aprender a usar o programa gdb da gnu para fazer o debug em linha de comando, sem o uso da interface gráfica. Mais ainda, aprenda a gerar a documentação desta library gerada por você fazendo uso do programa doxygen. Atividade Extra Opcional: Pesquise sobre, e adote, um dos padrões de codificação Misra C ou Cert C para desenvolvimento de código para sistemas críticos de tempo real.
-
+```c
 /**
 @brief Seta o bit da posição de memória apontada por p
 @param p Ponteiro para variável de 32bits cujo bit será setado
@@ -43,4 +43,4 @@ unsigned long  ReadBitSlice(unsigned long *p, unsigned char bitstart, unsigned c
 @return Retorna 1 para Little endian e 0  para Big Endian
 */
 unsigned char IsLittleEndian (void) { }
-
+```
